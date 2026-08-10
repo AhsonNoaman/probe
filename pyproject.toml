@@ -23,7 +23,9 @@ where = ["src"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
-files = ["src/probe"]
+files = ["src/probe", "scripts", "tests"]
+# Scripts and tests are checked too. The judge's fixtures live in the tests, and an untyped
+# fixture is exactly where a wrong expectation hides.
 
 # flightops is mypy --strict clean in its own repository but ships no py.typed marker, so its
 # types are invisible to a downstream consumer. Following the untyped import gives probe the real
