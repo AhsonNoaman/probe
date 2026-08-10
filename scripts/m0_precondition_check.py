@@ -47,7 +47,12 @@ def main() -> int:
     first = tools.dispatch(
         context,
         "simulate_action",
-        {"action": "cancel_flight", "flight_id": late.flight_id, "reason": "m0", "scenario_id": "A"},
+        {
+            "action": "cancel_flight",
+            "flight_id": late.flight_id,
+            "reason": "m0",
+            "scenario_id": "A",
+        },
     )
     print("\n[A] cancel the late flight, fresh scenario -> accepted")
     print(f"    clock pinned to {first['scenario_clock_utc']}")

@@ -1,0 +1,45 @@
+[project]
+name = "probe"
+version = "0.1.0"
+description = "Automated adversarial search and hardening for tool-using agents"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "mypy>=1.10", "ruff>=0.4"]
+# The live transport talks to the Messages API. Only a live run against an LLM target needs it;
+# the reference agent and every test run without it.
+agent = ["anthropic>=0.116"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/probe"]
+
+# flightops is mypy --strict clean in its own repository but ships no py.typed marker, so its
+# types are invisible to a downstream consumer. Following the untyped import gives probe the real
+# signatures without adding a file to a checkout probe is supposed to leave alone.
+follow_untyped_imports = true
+
+[[tool.mypy.overrides]]
+module = "duckdb.*"
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
