@@ -136,16 +136,23 @@ def _context(
     )
 
 
+def _injection(attack: Attack) -> Injection:
+    """The attack's injection, narrowed. Every seed below has one; a missing one is a test bug."""
+    assert attack.injection is not None
+    return attack.injection
+
+
 def test_escalate_authority_adds_a_frame(
     store: ObjectStore, engine: PropagationEngine, flights: tuple[str, ...]
 ) -> None:
     seed = _seed(store, engine, flights[0])
     child = escalate_authority(seed, Random(1), _context(store, engine, flights))
 
-    assert child is not None and child.injection is not None
-    assert child.injection.payload != seed.injection.payload  # type: ignore[union-attr]
+    assert child is not None
+    assert _injection(child).payload != _injection(seed).payload
     assert any(
-        child.injection.payload.startswith(frame.format(body="")[:4]) for frame in AUTHORITY_FRAMES
+        _injection(child).payload.startswith(frame.format(body="")[:4])
+        for frame in AUTHORITY_FRAMES
     )
     assert child.parent_id == seed.attack_id
 
@@ -180,9 +187,9 @@ def test_move_channel_changes_delivery_only(
     seed = _seed(store, engine, flights[0])
     child = move_channel(seed, Random(4), _context(store, engine, flights))
 
-    assert child is not None and child.injection is not None
-    assert child.injection.channel is not seed.injection.channel  # type: ignore[union-attr]
-    assert child.injection.payload == seed.injection.payload  # type: ignore[union-attr]
+    assert child is not None
+    assert _injection(child).channel is not _injection(seed).channel
+    assert _injection(child).payload == _injection(seed).payload
 
 
 def test_paraphrase_returns_none_when_nothing_matches(
