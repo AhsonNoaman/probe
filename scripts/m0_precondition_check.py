@@ -4,10 +4,10 @@ Not probe implementation -- M0 ships no implementation. This is the evidence for
 claim, kept runnable for the same reason flightops records `verified_by` on every eval
 question: a finding a reader cannot re-derive is an assertion.
 
-Run against a flightops checkout:
+Run from a flightops checkout, which is where its `src` lives:
 
-    cd /home/user/flight-ops-deployment
-    .venv/bin/python /home/user/probe/scripts/m0_precondition_check.py
+    cd ../flight-ops-deployment
+    .venv/bin/python ../probe/scripts/m0_precondition_check.py
 
 Shows that flightops's `is_pending` precondition cannot reject the first action in a fresh
 scenario, because `ToolContext.scenario_for` pins that scenario's clock to one minute before
