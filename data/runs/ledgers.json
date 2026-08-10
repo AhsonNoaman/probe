@@ -4,20 +4,20 @@
     "allocated_usd": 36.0,
     "spent_usd": 0.0,
     "episodes": 140,
-    "allocated_at": "2026-08-10T19:33:21+00:00"
+    "allocated_at": "2026-08-10T19:59:58+00:00"
   },
   "search": {
     "name": "search",
     "allocated_usd": 70.0,
     "spent_usd": 0.0,
     "episodes": 140,
-    "allocated_at": "2026-08-10T19:33:21+00:00"
+    "allocated_at": "2026-08-10T19:59:58+00:00"
   },
   "utility": {
     "name": "utility",
     "allocated_usd": 21.0,
     "spent_usd": 0.0,
     "episodes": 0,
-    "allocated_at": "2026-08-10T19:33:21+00:00"
+    "allocated_at": "2026-08-10T19:59:58+00:00"
   }
 }

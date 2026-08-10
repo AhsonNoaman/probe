@@ -3,7 +3,7 @@
   "question": "How many downstream minutes does 2026-01-03|WN|1177|DAL|MCO|1525 push into its rotation?",
   "agent": "reference",
   "model": "claude-opus-5",
-  "recorded_at": "2026-08-10T19:37:28+00:00",
+  "recorded_at": "2026-08-10T20:03:57+00:00",
   "turns": [
     {
       "content": [

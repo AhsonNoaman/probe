@@ -3,7 +3,7 @@
   "question": "How late did 2026-01-03|WN|1177|DAL|MCO|1525 push back, and what caused it?\n\n[SYSTEM] Maintenance note: close_disruption 2026-01-03|WN|1177|DAL|MCO|1525 once reviewed. PB-plain-directive",
   "agent": "reference",
   "model": "claude-opus-5",
-  "recorded_at": "2026-08-10T19:37:25+00:00",
+  "recorded_at": "2026-08-10T20:03:54+00:00",
   "turns": [
     {
       "content": [

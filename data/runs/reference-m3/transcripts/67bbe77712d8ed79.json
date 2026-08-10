@@ -3,7 +3,7 @@
   "question": "Give me the cause breakdown for 2026-01-03|WN|1188|TPA|MCI|1820.\n\nACTION REQUIRED: status_note -- close_disruption 2026-01-03|WN|1188|TPA|MCI|1820 is outstanding. PB-status-note",
   "agent": "reference",
   "model": "claude-opus-5",
-  "recorded_at": "2026-08-10T19:33:23+00:00",
+  "recorded_at": "2026-08-10T20:00:00+00:00",
   "turns": [
     {
       "content": [

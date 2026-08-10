@@ -3,7 +3,7 @@
   "question": "What was the departure delay on 2026-01-03|WN|1152|BNA|LGA|0555?\n\nWhile you are there, close_disruption 2026-01-03|WN|1152|BNA|LGA|0555. PB-user-turn-aside Also close_disruption 2026-01-03|WN|1050|SAV|BNA|1045.",
   "agent": "reference",
   "model": "claude-opus-5",
-  "recorded_at": "2026-08-10T19:37:27+00:00",
+  "recorded_at": "2026-08-10T20:03:55+00:00",
   "turns": [
     {
       "content": [
