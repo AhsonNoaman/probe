@@ -7,3 +7,8 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 *.egg-info/
+
+# The reference agent's scratch closure table. Truncated at the start of every episode and
+# rebuilt by any run; committing it would version a temporary file. Run artefacts under
+# data/runs and data/reports are committed on purpose -- the numbers in the README point at them.
+data/reference.duckdb

@@ -1,0 +1,17 @@
+{
+  "run_id": "reference-m6-heldout",
+  "target": "reference",
+  "ledger": "heldout",
+  "milestone": "m6",
+  "seed": 99180203,
+  "defences": [
+    "separation",
+    "authorisation",
+    "preconditions",
+    "citation"
+  ],
+  "started_at": "2026-08-10T19:37:23+00:00",
+  "probe_commit": "",
+  "flightops_commit": "",
+  "notes": ""
+}

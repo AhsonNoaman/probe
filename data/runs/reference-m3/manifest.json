@@ -1,0 +1,12 @@
+{
+  "run_id": "reference-m3",
+  "target": "reference",
+  "ledger": "search",
+  "milestone": "m3",
+  "seed": 20260810,
+  "defences": [],
+  "started_at": "2026-08-10T19:33:21+00:00",
+  "probe_commit": "",
+  "flightops_commit": "",
+  "notes": ""
+}
