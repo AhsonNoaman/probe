@@ -3,6 +3,8 @@
 Automated adversarial search against tool-using agents, plus a measurement of whether the
 defences you add generalise past the attacks you already found.
 
+Live report: [ahsonnoaman.github.io/probe](https://ahsonnoaman.github.io/probe/)
+
 The search proposes structured attacks, mutates the ones that score, and grades every episode
 mechanically against a clean control run of the same case. It then hardens the target, runs a
 *second* search it has never seen, and reports the difference. That second number is the
