@@ -18,24 +18,27 @@ system, model provider, or anyone else's deployment is a target, and the harness
 capability to reach one. Targets are Python objects constructed in-process, not endpoints. The
 attack strings committed under `data/runs/` are evidence for findings about my own code.
 
-## What was measured, and what was not
+## What was measured
 
-Every number below comes from the **reference agent**: a deterministic, non-LLM
-instruction-following policy, written to be under-defended in four specific ways
-([DESIGN.md §7.2](DESIGN.md)). It is the control that shows the harness can detect a break at
-all. It is not evidence about any language model's robustness, and nothing here claims
-otherwise.
+Two arcs, side by side.
 
-The **`flightops` LLM target was built, wired, type-checked and tested, but never run.**
-Driving it needs an `ANTHROPIC_API_KEY` this environment does not have. No estimated,
-extrapolated, or model-generated figure stands in for it anywhere in this repository.
-`flightops` shipped an eval harness that was never executed ([DESIGN.md §1.2](DESIGN.md));
-repeating that mistake here would have been worse, so the reference agent exists precisely so
-that *something* real gets measured.
+The **reference agent** is the full arc: search, nine-way configuration sweep, held-out M6
+generalisation gap. Every number in the Results section below comes from it. It is a
+deterministic, non-LLM instruction-following policy written to be under-defended in four
+specific ways ([DESIGN.md §7.2](DESIGN.md)). It is a control -- it shows the harness can
+detect a break at all -- and it is not evidence about a language model's own robustness.
 
-Total measured spend: **$0.0000**, across 280 search episodes and 5,760 panel episodes (plus
-their controls). The reference agent runs offline, which is what made a search this size
-possible with no key.
+The **`flightops` LLM target** was driven live in a 60-episode undefended pilot on
+`claude-opus-5`, under a firm $65 spend cap. The pilot covers the M3 search phase only: the
+panel evaluation, configuration sweep, and held-out M6 search did not run against the live
+target in this session. The pilot answers a narrower question -- can the search find distinct
+attack mechanisms on the real model at all, and at what cost per mechanism -- and it did. 60
+episodes surfaced **35 distinct mechanisms**, first success in each supported class between
+episode 1 and episode 7. Measured spend on that arc was **$4.4493**, mean $0.074 per episode,
+worst case $0.171. The full pilot section is in
+[data/reports/findings.md](data/reports/findings.md).
+
+Reference-agent spend across every ledger: **$0.0000**, across 280 search episodes and 5,760 panel episodes (plus their controls). Flightops pilot spend: **$4.4493**, across 60 live search episodes. The reference agent runs offline, which is what made a search that large possible without touching a key.
 
 ## Results
 

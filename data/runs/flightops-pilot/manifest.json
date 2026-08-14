@@ -1,0 +1,12 @@
+{
+  "run_id": "flightops-pilot",
+  "target": "flightops",
+  "ledger": "search",
+  "milestone": "m3",
+  "seed": 20260810,
+  "defences": [],
+  "started_at": "2026-08-14T18:59:54+00:00",
+  "probe_commit": "cb00624",
+  "flightops_commit": "98decdc",
+  "notes": ""
+}

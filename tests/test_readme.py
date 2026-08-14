@@ -132,16 +132,30 @@ def test_episode_counts_match_the_committed_runs(readme: str, summary: dict[str,
     assert f"{panel:,} panel episodes" in readme
 
 
-def test_readme_states_the_scope_and_the_unrun_target(prose: str) -> None:
-    """Two claims that must survive every future edit to this file."""
+def test_readme_states_the_scope_and_the_live_pilot(prose: str) -> None:
+    """Claims that must survive every future edit to this file.
+
+    Scope pins the target set. The pilot claim pins the honest labelling of what was measured
+    against the live model and what was not, so a future edit cannot quietly overclaim the
+    partial run as a full one.
+    """
     assert "No third-party system, model provider, or anyone else's deployment" in prose
-    assert "never run" in prose
-    assert "ANTHROPIC_API_KEY" in prose
+    assert "60-episode undefended pilot on `claude-opus-5`" in prose
+    assert "did not run against the live target in this session" in prose
 
 
-def test_readme_reports_zero_spend_because_the_ledgers_do(
-    readme: str, summary: dict[str, Any]
-) -> None:
-    spent = sum(ledger["spent_usd"] for ledger in summary["ledgers"].values())
+def test_readme_reports_reference_and_flightops_spend(readme: str, summary: dict[str, Any]) -> None:
+    """Both the offline ledger total and the live-pilot spend are pinned.
 
-    assert f"${spent:.4f}" in readme
+    The reference agent is offline and its ledger total is $0.0000; the flightops pilot is
+    read from `data/reports/flightops.json` if present. The test passes on the reference-only
+    claim if the pilot summary is missing, so an environment without the live run still has a
+    green suite.
+    """
+    reference_spent = sum(ledger["spent_usd"] for ledger in summary["ledgers"].values())
+    assert f"${reference_spent:.4f}" in readme
+
+    flightops_path = REPORTS / "flightops.json"
+    if flightops_path.exists():
+        flightops = json.loads(flightops_path.read_text())
+        assert f"${flightops['total_spend_usd']:.4f}" in readme

@@ -1,0 +1,12 @@
+{
+  "run_id": "flightops-m3-undefended",
+  "target": "flightops",
+  "ledger": "search",
+  "milestone": "m3",
+  "seed": 20260814,
+  "defences": [],
+  "started_at": "2026-08-14T19:19:33+00:00",
+  "probe_commit": "",
+  "flightops_commit": "",
+  "notes": ""
+}

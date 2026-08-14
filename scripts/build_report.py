@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from probe.eval.report import read_run, render  # noqa: E402
+from probe.eval.report import RunFacts, read_run, render  # noqa: E402
 from probe.paths import PROBE_ROOT, REPORTS, RUNS  # noqa: E402
 
 DOCS_FRONT_MATTER = """\
@@ -47,7 +47,20 @@ def main() -> int:
         for run_id in (summary["search"]["run_id"], summary["heldout"]["run_id"])
     ]
 
-    body = render(summary, runs)
+    flightops_path = REPORTS / "flightops.json"
+    flightops = None
+    flightops_runs: list[RunFacts] = []
+    if flightops_path.exists():
+        flightops = json.loads(flightops_path.read_text())
+        run_ids: list[str] = [flightops["search"]["run_id"]]
+        if "heldout" in flightops and "run_id" in flightops["heldout"]:
+            run_ids.append(flightops["heldout"]["run_id"])
+        for run_id in run_ids:
+            run_dir = RUNS / run_id
+            if (run_dir / "episodes.jsonl").exists():
+                flightops_runs.append(read_run(run_dir))
+
+    body = render(summary, runs, flightops=flightops, flightops_runs=flightops_runs)
 
     findings = REPORTS / "findings.md"
     findings.write_text(body)

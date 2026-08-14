@@ -10,7 +10,7 @@ help:
 install:  ## create the venv, install probe and the flightops checkout it targets
 	python3 -m venv .venv
 	$(PY) -m pip install -q -e '.[dev]'
-	$(PY) -m pip install -q -e $(FLIGHTOPS)
+	$(PY) -m pip install -q -e '$(FLIGHTOPS)[agent]'
 
 search:  ## one offline search against the reference agent; no API key, no cost
 	$(PY) scripts/run_search.py --target reference --ledger search --milestone m3
