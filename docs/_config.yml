@@ -1,0 +1,4 @@
+theme: jekyll-theme-cayman
+title: probe
+description: adversarial search against tool-using agents, with a measured generalisation gap
+show_downloads: false
